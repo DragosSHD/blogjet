@@ -1,0 +1,14 @@
+{
+  "name": "blogjet",
+  "version": "1.0.0",
+  "description": "Web application for fast creation of personalized blogs.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "DragosSHD",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
