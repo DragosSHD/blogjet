@@ -9,17 +9,16 @@ app.use('/js', express.static(__dirname + 'app/public/js'));
 app.use('/img', express.static(__dirname + 'app/public/img'));
 
 // Set template engine
+app.set('views', __dirname + '/app/views');
 app.set('view engine', 'ejs');
 
-// Set demo message
-app.get("/", (req, res) => {
-    res.json({message: "Welcome to Blogjet!"});
-});
+require(__dirname + '/app/routes/post.routes')(app);
 
 // Listen to port 8080
 const PORT = 8080;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
 
 
