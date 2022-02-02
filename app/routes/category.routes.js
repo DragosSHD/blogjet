@@ -1,6 +1,6 @@
 module.exports = app => {
     const category = require("../controllers/category.controller");
-    const router = require("express").Router;
+    const router = require("express").Router();
 
     // CRUD Operations
     // CREATE new category
