@@ -21,7 +21,8 @@ app.listen(PORT, () => {
 });
 
 // Connect to the database
-const db = require('./app/models')
+const db = require('./app/models');
+// noinspection JSCheckFunctionSignatures,JSVoidFunctionReturnValueUsed
 db.mongoose
     .connect(db.url, {
         useNewUrlParser: true,
