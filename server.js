@@ -13,6 +13,8 @@ app.set('views', __dirname + '/app/views');
 app.set('view engine', 'ejs');
 
 require(__dirname + '/app/routes/post.routes')(app);
+require(__dirname + '/app/routes/user.routes')(app);
+require(__dirname + '/app/routes/category.routes')(app);
 
 // Listen to port 8080
 const PORT = 8080;
