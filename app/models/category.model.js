@@ -6,7 +6,8 @@ module.exports = mongoose => {
             {
                 name: {
                     type: String,
-                    required: true
+                    required: true,
+                    unique: true
                 },
                 shortDescription: String,
                 author: {
