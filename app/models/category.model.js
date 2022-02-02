@@ -4,11 +4,15 @@ module.exports = mongoose => {
         "category",
         mongoose.Schema(
             {
-                name: String,
+                name: {
+                    type: String,
+                    required: true
+                },
                 shortDescription: String,
                 author: {
                     type: Schema.Types.ObjectId,
-                    ref: "User"
+                    ref: "user",
+                    required: true
                 }
             },
             { timestamps: true }
