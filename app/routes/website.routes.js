@@ -2,7 +2,7 @@ module.exports = app => {
   const router = require("express").Router();
 
     router.get('/', async (req, res) => {
-        res.render('home');
+        res.render('pages/home');
     });
 
     app.use('', router);
