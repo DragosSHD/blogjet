@@ -4,7 +4,7 @@ const Post = db.post;
 // Create and Save a new Post
 exports.create = (req, res) => {
 // Validate request
-    if (!req.body.name) {
+    if (!req.body.title) {
         res.status(400).send({ message: "Content can not be empty!" });
         return;
     }
