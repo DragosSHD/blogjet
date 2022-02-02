@@ -1,3 +1,18 @@
 body {
-    background-color: black;
+    background-color: #000000;
+}
+
+.container {
+    background-color: #072227;
+    min-height: 100vh;
+}
+
+main {
+    background-color: white;
+    min-height: 100vh;
+}
+
+aside {
+    background-color: white;
+    min-height: 100vh;
 }
