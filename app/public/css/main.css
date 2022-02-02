@@ -16,3 +16,18 @@ aside {
     background-color: white;
     min-height: 100vh;
 }
+
+header {
+    background-color: #35858B;
+    color: black;
+    padding: 10px;
+}
+
+footer {
+    padding: 20px;
+    background-color: #072227;
+}
+
+footer > * {
+    margin: 0;
+}
