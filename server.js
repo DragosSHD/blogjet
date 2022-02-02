@@ -1,12 +1,16 @@
 // Imports
 const express = require("express");
 const app = express();
+const parser = require("body-parser");
 
 // Static files
 app.use(express.static('./app/public'));
 app.use('/css', express.static(__dirname + 'app/public/css'));
 app.use('/js', express.static(__dirname + 'app/public/js'));
 app.use('/img', express.static(__dirname + 'app/public/img'));
+
+// Use Parser
+app.use(parser.json());
 
 // Set template engine
 app.set('views', __dirname + '/app/views');
