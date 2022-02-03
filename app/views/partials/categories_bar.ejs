@@ -1,0 +1,8 @@
+<ul>
+    <% if(categories.length){
+    for(let i = 0; i < categories.length; i++) {%>
+        <li><a href="/category?name=<%= categories[i].name %>"><%= categories[i].name %></a></li>
+    <% }} else { %>
+        <p class="alert-danger">No Categories</p>
+    <% } %>
+</ul>

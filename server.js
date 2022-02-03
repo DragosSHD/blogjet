@@ -13,8 +13,8 @@ app.use('/img', express.static(__dirname + '/app/public/img'));
 app.use(parser.json());
 
 // Set template engine
-app.set('views', __dirname + '/app/views');
 app.set('view engine', 'ejs');
+app.set('views', __dirname + '/app/views');
 
 require(__dirname + '/app/routes/post.routes')(app);
 require(__dirname + '/app/routes/user.routes')(app);

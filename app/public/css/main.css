@@ -23,6 +23,10 @@ header {
     padding: 10px;
 }
 
+header .go-left {
+
+}
+
 footer {
     padding: 20px;
     background-color: #072227;
@@ -31,3 +35,5 @@ footer {
 footer > * {
     margin: 0;
 }
+
+
