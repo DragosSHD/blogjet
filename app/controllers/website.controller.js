@@ -70,7 +70,7 @@ exports.launchPostFormSuccess = async (req, res) => {
     post
         .save(post)
         .then(() => {
-            res.render('pages/post_form_success.ejs' , {
+            res.render('pages/create_success' , {
                 title: "Post Created",
                 h1: "Post created successfully!"
             });
@@ -86,7 +86,7 @@ exports.launchPostFormSuccess = async (req, res) => {
 
 exports.launchCategoryForm = async (req, res) => {
     res.render('pages/category_form', {
-        title: "New Post",
+        title: "New Category",
         h1: "Create a new category",
     });
 }
@@ -124,7 +124,12 @@ exports.launchCategoryFormSuccess = async (req, res) => {
 
 }
 
-
+exports.launchUserForm = async (req, res) => {
+    res.render('pages/category_form', {
+        title: "New User",
+        h1: "Create a new category",
+    });
+}
 
 
 
