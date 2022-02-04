@@ -6,15 +6,17 @@ module.exports = app => {
   // Homepage
   router.get('/', Website.launchHomepage);
   // Categories page
-  router.get('/category', Website.launchCategory)
+  router.get('/category', Website.launchCategory);
   // Post creation form
-  router.get('/new_post', Website.launchPostForm)
+  router.get('/new_post', Website.launchPostForm);
   // Handle post data
-  router.post('/new_post', urlencoded,  Website.launchPostFormSuccess)
+  router.post('/new_post', urlencoded,  Website.launchPostFormSuccess);
   // Category creation form
-  router.get('/new_category', Website.launchCategoryForm)
+  router.get('/new_category', Website.launchCategoryForm);
   // Handle category data
-  router.post('/new_category', urlencoded, Website.launchCategoryFormSuccess)
+  router.post('/new_category', urlencoded, Website.launchCategoryFormSuccess);
+  // User creation form
+  router.get('/new_user', Website.launchUserForm);
 
 
     app.use('', router);

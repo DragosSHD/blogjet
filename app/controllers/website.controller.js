@@ -37,7 +37,7 @@ exports.launchCategory = async (req, res) => {
 // Render post form
 exports.launchPostForm = async (req, res) => {
     const categoriesData = await Category.find({}).lean();
-    res.render('pages/post_form', {
+    res.render('pages/form_create_post', {
         categories: categoriesData,
         title: "New Post",
         h1: "Create a new post",
@@ -85,7 +85,7 @@ exports.launchPostFormSuccess = async (req, res) => {
 
 
 exports.launchCategoryForm = async (req, res) => {
-    res.render('pages/category_form', {
+    res.render('pages/form_create_category', {
         title: "New Category",
         h1: "Create a new category",
     });
@@ -125,9 +125,9 @@ exports.launchCategoryFormSuccess = async (req, res) => {
 }
 
 exports.launchUserForm = async (req, res) => {
-    res.render('pages/category_form', {
+    res.render('pages/form_create_user', {
         title: "New User",
-        h1: "Create a new category",
+        h1: "Add a new user",
     });
 }
 

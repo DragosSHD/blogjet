@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blogjet | <%= title%>></title>
+    <%- include('../partials/links') %>
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+<header class="sticky-top">
+    <%- include('../partials/header'); %>
+</header>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <main>
+                <h1><%= h1 %></h1>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Username</label>
+                        <input type="text" class="form-control" id="post_title" placeholder="JohnDoe23" required
+                               name="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Full name</label>
+                        <input type="text" class="form-control" id="post_title" placeholder="John Doe" required
+                               name="fullName">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Email</label>
+                        <input type="email" class="form-control" id="post_title" placeholder="john@doe.com" required
+                               name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Password</label>
+                        <input type="password" class="form-control" id="post_title" required
+                               name="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Age</label>
+                        <input type="number" class="form-control" id="post_title" min="0" max="100"
+                               name="age">
+                    </div>
+                    <div id="bottom_line" class="form-group">
+                        <span>
+                        </span>
+                        <input id="submitBtn" type="submit" value="Add User">
+                    </div>
+                </form>
+            </main>
+        </div>
+    </div>
+</div>
+<footer>
+    <%- include('../partials/footer') %>
+</footer>
+</body>
+</html>
