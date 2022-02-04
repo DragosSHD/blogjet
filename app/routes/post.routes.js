@@ -5,8 +5,6 @@ module.exports = app => {
     // CRUD Operations
     // CREATE new post
     router.post("/", post.create);
-    // CREATE new post based on form
-    router.post("/form", post.createFromForm);
     // RETRIEVE ALL posts
     router.get("/", post.findAll);
     // RETRIEVE a single post based on id

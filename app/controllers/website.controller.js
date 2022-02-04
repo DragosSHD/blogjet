@@ -54,6 +54,7 @@ exports.launchPostFormSuccess = async (req, res) => {
         return;
     }
     req.body.keywords = req.body.keywords.split(" ");
+    //TODO: Manage the author after implementing authentication.
     req.body.author = "61fa87662186882dcf66f42c";
     // Create a Post
     const post = new Post({
