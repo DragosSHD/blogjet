@@ -56,6 +56,7 @@ exports.launchPostFormSuccess = async (req, res) => {
     req.body.keywords = req.body.keywords.split(" ");
     //TODO: Manage the author after implementing authentication.
     req.body.author = "61fa87662186882dcf66f42c";
+    console.log(req.body.isPublished);
     // Create a Post
     const post = new Post({
         title: req.body.title,
@@ -64,7 +65,7 @@ exports.launchPostFormSuccess = async (req, res) => {
         imgPath: req.body.imgPath,
         author: req.body.author,
         category: req.body.category,
-        isPublished: req.body.isPublished ? req.body.isPublished : false
+        isPublished: (req.body.isPublished === "on")
     });
     // Save Post in the database
     post
@@ -82,4 +83,17 @@ exports.launchPostFormSuccess = async (req, res) => {
             });
         });
 };
+
+
+exports.launchCategoryForm = async (req, res) => {
+    res.render('pages/category_form', {
+        title: "New Post",
+        h1: "Create a new category",
+    });
+}
+
+
+
+
+
 

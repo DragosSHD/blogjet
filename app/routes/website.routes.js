@@ -1,26 +1,19 @@
-require("../controllers/website.controller");
 module.exports = app => {
   const router = require("express").Router();
-  const Website = require("../controllers/website.controller")
+  const Website = require("../controllers/website.controller");
+  const urlencoded = require("body-parser").urlencoded({ extended: false });
 
   // Homepage
-  router.get('/', async (req, res) => {
-    await Website.launchHomepage(req, res);
-  });
+  router.get('/', Website.launchHomepage);
   // Categories page
-  router.get('/category', async (req, res) => {
-    await Website.launchCategory(req, res);
-  })
-  // Create post page
-  // Categories page
-  router.get('/new_post', async (req, res) => {
-    await Website.launchPostForm(req, res);
-  })
+  router.get('/category', Website.launchCategory)
+  // Post creation form
+  router.get('/new_post', Website.launchPostForm)
+  // Post page success
+  router.post('/new_post', urlencoded,  Website.launchPostFormSuccess)
+  // Category creation form
+  router.get('/new_category', Website.launchCategoryForm)
 
-  const urlencoded = require("body-parser").urlencoded({ extended: false });
-  router.post('/new_post', urlencoded,  async (req, res) => {
-    await Website.launchPostFormSuccess(req, res);
-  })
 
     app.use('', router);
 };
