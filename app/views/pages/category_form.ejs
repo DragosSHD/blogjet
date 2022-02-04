@@ -14,31 +14,21 @@
         <div class="col-12">
             <main>
                 <h1><%= h1 %></h1>
-                <form action="/new_post" method="POST">
+                <form action="/new_category" method="POST">
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Title</label>
-                        <input type="text" class="form-control" id="post_title" placeholder="A fancy title here..." required
-                               name="title">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlInput1">Keywords</label>
-                        <input type="text" class="form-control" id="post_title" placeholder="cats, cars, business, money, banks..."
-                               required name="keywords">
+                        <label for="exampleFormControlInput1">Category name</label>
+                        <input type="text" class="form-control" id="post_title" placeholder="Your category's name" required
+                               name="name">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Short Description</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required name="shortDescription"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Article body</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" required name="articleText"></textarea>
-                    </div>
                     <div id="bottom_line" class="form-group">
                         <span>
-                            <input type="checkbox" id="isPublished" name="isPublished">
-                            <label for="isPublished">Publish article</label>
+
                         </span>
-                        <input id="submitBtn" type="submit" value="Create Article">
+                        <input id="submitBtn" type="submit" value="Create Category">
                     </div>
                 </form>
             </main>

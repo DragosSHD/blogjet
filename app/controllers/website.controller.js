@@ -56,7 +56,6 @@ exports.launchPostFormSuccess = async (req, res) => {
     req.body.keywords = req.body.keywords.split(" ");
     //TODO: Manage the author after implementing authentication.
     req.body.author = "61fa87662186882dcf66f42c";
-    console.log(req.body.isPublished);
     // Create a Post
     const post = new Post({
         title: req.body.title,
@@ -90,6 +89,39 @@ exports.launchCategoryForm = async (req, res) => {
         title: "New Post",
         h1: "Create a new category",
     });
+}
+
+
+exports.launchCategoryFormSuccess = async (req, res) => {
+
+    // Validate request
+    if (!req.body.name) {
+        res.status(400).send({ message: "Content can not be empty!" });
+    }
+    //TODO: Manage the author after implementing authentication.
+    req.body.author = "61fa87662186882dcf66f42c";
+    const category = new Category({
+        name: req.body.name,
+        shortDescription: req.body.shortDescription,
+        author: req.body.author
+    });
+// Save Category in the database
+    category
+        .save(category)
+        .then(() => {
+            res.render('pages/create_success', {
+                title: "New Category",
+                h1: "Category created successfully!",
+            });
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while creating the Category."
+            });
+        });
+
+
 }
 
 
