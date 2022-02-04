@@ -1,0 +1,18 @@
+form {
+    width: 60%;
+    padding: 10px;
+    background-color: #AEFEFF;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #242424;
+}
+
+h1 {
+    color: #FFFFFF;
+}
+
+#bottom_line {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}

@@ -8,7 +8,7 @@ body {
 }
 
 main {
-    background-color: white;
+    /*background-color: white;*/
     min-height: 100vh;
 }
 
@@ -23,8 +23,8 @@ header {
     padding: 10px;
 }
 
-header .go-left {
-
+h1 {
+    color: #FFFFFF;
 }
 
 footer {
@@ -34,6 +34,10 @@ footer {
 
 footer > * {
     margin: 0;
+}
+
+.posts-container > * {
+    margin: 10px 0;
 }
 
 
