@@ -17,17 +17,17 @@
                 <h1><%= h1 %></h1>
                 <form action="/new_post" method="POST">
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Title</label>
+                        <label for="title">Title</label>
                         <input type="text" class="form-control" id="post_title" placeholder="A fancy title here..." required
                         name="title">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Keywords</label>
+                        <label for="keywords">Keywords</label>
                         <input type="text" class="form-control" id="post_title" placeholder="cats, cars, business, money, banks..."
                         required name="keywords">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Select Category</label>
+                        <label for="category">Select Category</label>
                         <select class="form-control" id="exampleFormControlSelect1" name="category">
                             <option selected="true" disabled="disabled">Select a category....</option>
                             <% if(categories.length) {
@@ -38,11 +38,11 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Short Description</label>
+                        <label for="shortDescription">Short Description</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required name="shortDescription"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Article body</label>
+                        <label for="articleText">Article body</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="8" required name="articleText"></textarea>
                     </div>
                     <div id="bottom_line" class="form-group">
