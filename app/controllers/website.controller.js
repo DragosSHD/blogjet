@@ -46,7 +46,7 @@ exports.launchPost = async(req, res) => {
     if(crtId.length !== 24) {
         res.render('pages/404', {
             title: "404 - Not found"
-        })
+        });
     } else {
         const categoriesData = await Category.find({}).lean();
         const postData = await Post.findById(crtId).lean();
@@ -74,14 +74,74 @@ exports.launchPostForm = async (req, res) => {
 
 // Render post edit form
 exports.launchPostEditForm = async (req, res) => {
-    const categoriesData = await Category.find({}).lean();
-    const crtPost = await Post.findById(req.body.id);
-    res.render('pages/form_edit_post', {
-        categories: categoriesData,
-        title: "New Post",
-        h1: "Create a new post",
-    });
+    if(!req.query.id) {
+        res.render('pages/404', {
+            title: "404 - Not found"
+        });
+    } else {
+        const categoriesData = await Category.find({}).lean();
+        const crtPost = await Post.findById(req.query.id);
+        res.render('pages/form_edit_post', {
+            categories: categoriesData,
+            title: "Edit Post",
+            h1: "Edit post: " + crtPost.title,
+            crtPost: crtPost
+        });
+    }
+
 };
+
+// Render success page and handle POST edit data
+exports.launchPostEditFormSuccess = async (req, res) => {
+    if (!req.body) {
+        return res.status(400).send({
+            message: "Data to update can not be empty!"
+        });
+    }
+    const id = req.body.id;
+    req.body.isPublished = req.body.isPublished === "on";
+    Post.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+        .then(data => {
+            if (!data) {
+                res.render('pages/404', {
+                    title: "404 - Not found"
+                });
+            } else {
+                res.render('pages/create_success' , {
+                    title: "Post Edited",
+                    h1: "Post edited successfully!"
+                });
+            }
+        })
+        .catch(() => {
+            res.status(500).send({
+                message: "Error updating Post with id=" + id
+            });
+        });
+}
+
+// Delete post
+exports.deletePost = async (req, res) => {
+    const id = req.params.id;
+    Post.findByIdAndRemove(id)
+        .then(data => {
+            if (!data) {
+                res.render('pages/404', {
+                    title: "404 - Not found"
+                });
+            } else {
+                res.render('pages/create_success' , {
+                    title: "Post Deleted",
+                    h1: "Post deleted successfully!"
+                });
+            }
+        })
+        .catch(() => {
+            res.status(500).send({
+                message: "Could not delete Post with id=" + id
+            });
+        });
+}
 
 
 // Render success page and handle data
@@ -92,7 +152,7 @@ exports.launchPostFormSuccess = async (req, res) => {
         res.status(400).send({ message: "Content can not be empty!" });
         return;
     }
-    req.body.keywords = req.body.keywords.split(" ");
+    req.body.keywords = req.body.keywords.split(/[\s,]+/);
     //TODO: Manage the author after implementing authentication.
     req.body.author = "61fa87662186882dcf66f42c";
     // Create a Post

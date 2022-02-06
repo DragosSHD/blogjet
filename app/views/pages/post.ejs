@@ -15,8 +15,8 @@
             <main>
                 <h1><%= h1 %></h1>
                 <div class="option-buttons">
-                    <button type="button" class="btn btn-primary">Edit</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
+                    <a href="/edit_post?id=<%= post._id%>"><button type="button" class="btn btn-primary">Edit</button></a>
+                    <a href="/delete_post/<%= post._id %>"><button type="button" class="btn btn-danger">Delete</button></a>
                 </div>
                 <article class="post-body">
                     <img src="" alt="Post image">
