@@ -29,6 +29,11 @@ For preventing eronated data from reaching the database, [validator.js](https://
 
 ## Screenshots
 
+![homepage](https://github.com/DragosSHD/blogjet/blob/master/demo_img/blogjet1.png)
+![post page](https://github.com/DragosSHD/blogjet/blob/master/demo_img/blogjet2.png)
+![edit a post page](https://github.com/DragosSHD/blogjet/blob/master/demo_img/blogjet3.png)
+![category page](https://github.com/DragosSHD/blogjet/blob/master/demo_img/blogjet4.png)
+
 ### Built With
 
 * [Node.js](https://nodejs.org/en/)
