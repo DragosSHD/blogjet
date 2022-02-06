@@ -16,6 +16,7 @@ exports.create = (req, res) => {
         imgPath: req.body.imgPath,
         author: req.body.author,
         category: req.body.category,
+        articleText: req.body.articleText,
         isPublished: req.body.isPublished ? req.body.isPublished : false
     });
 // Save Post in the database

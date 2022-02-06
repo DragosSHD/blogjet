@@ -24,6 +24,7 @@ module.exports = mongoose => {
                     ref: "category",
                     required: true
                 },
+                articleText: String,
                 isPublished: Boolean
             },
             { timestamps: true}

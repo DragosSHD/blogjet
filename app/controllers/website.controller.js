@@ -20,24 +20,63 @@ exports.launchHomepage = async (req, res) => {
 
 // Render category page
 exports.launchCategory = async (req, res) => {
+    if(!await Category.exists({ name: req.query.name})) {
+        res.render('pages/404', {
+            title: "404 - Not found"
+        });
+    } else {
+        const categoriesData = await Category.find({}).lean();
+        const crtCategory = await Category.find({ name: req.query.name }).lean();
+        const postsData = await Post.find({ category: crtCategory}).lean();
 
-    const categoriesData = await Category.find({}).lean();
-    const crtCategory = await Category.find({ name: req.query.name }).lean();
-    const postsData = await Post.find({ category: crtCategory}).lean();
-
-    res.render('pages/category', {
-        categories: categoriesData,
-        posts: postsData,
-        title: req.query.name,
-        h1: "Category",
-        currentCategory: req.query
-    });
+        res.render('pages/category', {
+            categories: categoriesData,
+            posts: postsData,
+            title: req.query.name,
+            h1: "Category",
+            currentCategory: req.query
+        });
+    }
 };
+
+// Render post page
+exports.launchPost = async(req, res) => {
+    const crtId = req.query.id;
+
+    if(crtId.length !== 24) {
+        res.render('pages/404', {
+            title: "404 - Not found"
+        })
+    } else {
+        const categoriesData = await Category.find({}).lean();
+        const postData = await Post.findById(crtId).lean();
+        const crtCategory = await Category.findById(postData.category).lean();
+
+        res.render('pages/post', {
+            categories: categoriesData,
+            post: postData,
+            title: postData.title,
+            h1: postData.title,
+            currentCategory: crtCategory.name
+        });
+    }
+}
 
 // Render post form
 exports.launchPostForm = async (req, res) => {
     const categoriesData = await Category.find({}).lean();
     res.render('pages/form_create_post', {
+        categories: categoriesData,
+        title: "New Post",
+        h1: "Create a new post",
+    });
+};
+
+// Render post edit form
+exports.launchPostEditForm = async (req, res) => {
+    const categoriesData = await Category.find({}).lean();
+    const crtPost = await Post.findById(req.body.id);
+    res.render('pages/form_edit_post', {
         categories: categoriesData,
         title: "New Post",
         h1: "Create a new post",
@@ -64,6 +103,7 @@ exports.launchPostFormSuccess = async (req, res) => {
         imgPath: req.body.imgPath,
         author: req.body.author,
         category: req.body.category,
+        articleText: req.body.articleText,
         isPublished: (req.body.isPublished === "on")
     });
     // Save Post in the database

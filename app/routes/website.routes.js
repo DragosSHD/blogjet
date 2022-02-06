@@ -7,6 +7,8 @@ module.exports = app => {
   router.get('/', Website.launchHomepage);
   // Categories page
   router.get('/category', Website.launchCategory);
+  // Post page
+  router.get('/post', Website.launchPost);
   // Post creation form
   router.get('/new_post', Website.launchPostForm);
   // Handle post data

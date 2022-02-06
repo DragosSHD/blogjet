@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blogjet | <%= title%></title>
+    <%- include('../partials/links') %>
+</head>
+<body>
+<header class="sticky-top">
+    <%- include('../partials/header'); %>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <main>
+                <h1><%= h1 %></h1>
+                <div class="option-buttons">
+                    <button type="button" class="btn btn-primary">Edit</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </div>
+                <article class="post-body">
+                    <img src="" alt="Post image">
+                    <h5>Category: <%= currentCategory %></h5>
+                    <p class="article-body"><%= post.articleText %></p>
+                </article>
+            </main>
+        </div>
+        <div class="col-3">
+            <aside>
+                <h3>Categories</h3>
+                <%- include("../partials/categories_bar.ejs") %>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+    <%- include('../partials/footer') %>
+</footer>
+</body>
+</html>

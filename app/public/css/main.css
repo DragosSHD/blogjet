@@ -14,7 +14,15 @@ main {
 
 aside {
     background-color: white;
-    min-height: 100vh;
+    padding: 5px;
+    margin: 10px 0;
+    border-radius: 10px;
+    position: sticky;
+    top: 13.8vh;
+}
+
+aside li {
+    list-style-type: disclosure-closed;
 }
 
 header {
@@ -46,4 +54,16 @@ footer > * {
     color: #878787;
 }
 
+.post-body {
+    background-color: #FFFFFF;
+    padding: 10px;
+    border-radius: 10px;
+}
 
+.post-body img {
+    min-height: 40vh;
+}
+
+.option-buttons {
+    padding: 10px;
+}
