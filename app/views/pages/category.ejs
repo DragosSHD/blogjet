@@ -16,7 +16,7 @@
                 <h1><%= h1 %>: <%= currentCategory.name%></h1>
                 <div class="posts-container">
                     <%if (posts.length) {
-                    for(let i = 0; i < posts.length; i++) {
+                    for(let i = posts.length - 1; i >= 0; i--) {
                     %>
                         <article class="card">
                             <div class="card-body">
@@ -24,7 +24,7 @@
                                 <p id="post_date">Posted on: <%= posts[i].createdAt.toLocaleDateString("en-GB", { hour: "2-digit",
                                         minute: "2-digit"})%></p>
                                 <p class="card-text"><%= posts[i].shortDescription%></p>
-                                <a href="#" class="btn btn-primary">Read more</a>
+                                <a href="/post?id=<%= posts[i]._id%>" class="btn btn-primary">Read more</a>
                             </div>
                         </article>
                     <% }} else { %>
