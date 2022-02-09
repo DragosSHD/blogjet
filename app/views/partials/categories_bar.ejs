@@ -1,5 +1,5 @@
 <div id="categories-area">
-        <button id="edit-btn" type="button" class="btn btn-outline-success" onclick="editCategories()">&#128736</button>
+        <button title="Manage categories" id="edit-btn" type="button" class="btn btn-outline-success" onclick="editCategories()">&#128736</button>
         <ul id="categories-links">
                 <% if(categories.length){
                 for(let i = 0; i < categories.length; i++) {%>
@@ -8,11 +8,11 @@
                         <p class="alert-danger">No Categories</p>
                 <% } %>
         </ul>
-        <button id="add-btn" style="display: none" type="button" class="btn btn-outline-info"
+        <button title="Add new category" id="add-btn" style="display: none" type="button" class="btn btn-outline-info"
                 onclick="addField()">&#10133</button>
-        <button id="save-btn" style="display: none" type="button" class="btn btn-outline-success"
+        <button title="Save" id="save-btn" style="display: none" type="button" class="btn btn-outline-success"
                 onclick="saveChanges()">&#128190</button>
-        <button id="discard-btn" style="display: none" type="button" class="btn btn-outline-danger"
+        <button title="Cancel" id="discard-btn" style="display: none" type="button" class="btn btn-outline-danger"
                 onclick="closeEditMenu()">&#10060</button>
 </div>
 

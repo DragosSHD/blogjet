@@ -38,7 +38,8 @@ function addField() {
     }
     newField.id = "new-cat-" + i;
     newField.name = "NEW";
-    newField.placeholder = "New Category " + i;
+    newField.placeholder = "New Category " + i
+    newField.value = null;
     editLinksBlock.appendChild(newField);
 }
 
@@ -49,10 +50,15 @@ function saveChanges() {
     for(let i = 0; i < editFields.length; i++) {
         // Check if field has been modified
         if(editFields[i].name !== editFields[i].value) {
-            if(editFields[i].name === "NEW") {
-                createNewCategory(editFields[i].value);
+            if(editFields[i].value === "") {
+                if(editFields[i].name !== "NEW")
+                    deleteCategory(editFields[i].id)
             } else {
-                editCategory(editFields[i].id, editFields[i].value);
+                if(editFields[i].name === "NEW") {
+                    createNewCategory(editFields[i].value);
+                } else {
+                    editCategory(editFields[i].id, editFields[i].value);
+                }
             }
         }
     }
@@ -60,9 +66,50 @@ function saveChanges() {
     closeEditMenu();
 }
 
+function deleteCategory(categoryID) {
+
+    const url = "http://localhost:8080/api/category/" + categoryID;
+
+    fetch(url, {
+       method: "DELETE"
+    }).then(
+        (data) => {
+            if(data.status === 200) {
+                document.getElementById(categoryID).remove();
+            }
+        }
+    );
+
+}
+
 function createNewCategory(categoryName) {
 
-    console.log("Create new category: " + categoryName);
+    const url = "http://localhost:8080/api/category/";
+
+    fetch(url, {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            name: categoryName
+        })
+    }).then(
+        (data) => {
+            if(data.status === 200) {
+                data.json().then((newCategory) => {
+                    const catLinksBlock = document.getElementById("categories-links");
+                    const newCategoryItem = document.createElement("li");
+                    newCategoryItem.id = newCategory._id;
+
+                    const newAnchor = document.createElement("a");
+                    newAnchor.href = "/category?name=" + newCategory.name;
+                    newAnchor.innerText = newCategory.name;
+
+                    catLinksBlock.appendChild(newCategoryItem);
+                    newCategoryItem.appendChild(newAnchor);
+                });
+            }
+        }
+    );
 
     // Create virtually in DOM
 
@@ -82,6 +129,7 @@ function editCategory(categoryId, newName) {
         if(data.status === 200) {
             // Edit virtually in DOM
             document.getElementById(categoryId).firstChild.innerText = newName;
+            document.getElementById(categoryId).firstChild.href = "/category?name=" + newName;
         }
     });
 

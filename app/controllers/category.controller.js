@@ -67,7 +67,6 @@ exports.findOne = (req, res) => {
 
 // Update a Category by the id in the request
 exports.update = (req, res) => {
-    console.log(req.body);
     if (!req.body) {
         return res.status(400).send({
             message: "Data to update can not be empty!"
