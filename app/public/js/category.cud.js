@@ -21,8 +21,9 @@ function editCategories() {
     const editFields = [];
     for(let i = 0; i < categoriesLinks.length; i++) {
         editFields[i] = document.createElement("input");
-        editFields[i].id = categoriesLinks[i].innerText;
+        editFields[i].id = categoriesLinks[i].id;
         editFields[i].value = categoriesLinks[i].innerText;
+        editFields[i].name = categoriesLinks[i].innerText;
         editLinksBlock.appendChild(editFields[i]);
     }
 }
@@ -36,6 +37,7 @@ function addField() {
         i++;
     }
     newField.id = "new-cat-" + i;
+    newField.name = "NEW";
     newField.placeholder = "New Category " + i;
     editLinksBlock.appendChild(newField);
 }
@@ -45,14 +47,47 @@ function saveChanges() {
     const editFields = editLinksBlock.children;
 
     for(let i = 0; i < editFields.length; i++) {
-        if(editFields[i].id !== editFields[i].value) {
-            console.log(editFields[i].value);
+        // Check if field has been modified
+        if(editFields[i].name !== editFields[i].value) {
+            if(editFields[i].name === "NEW") {
+                createNewCategory(editFields[i].value);
+            } else {
+                editCategory(editFields[i].id, editFields[i].value);
+            }
         }
     }
 
+    closeEditMenu();
 }
 
-function discardChanges() {
+function createNewCategory(categoryName) {
+
+    console.log("Create new category: " + categoryName);
+
+    // Create virtually in DOM
+
+}
+
+function editCategory(categoryId, newName) {
+
+    const url = "http://localhost:8080/api/category/" + categoryId;
+
+    fetch(url,  {
+        method: "PUT",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            name: newName
+        })
+    }).then((data) => {
+        if(data.status === 200) {
+            // Edit virtually in DOM
+            document.getElementById(categoryId).firstChild.innerText = newName;
+        }
+    });
+
+}
+
+function closeEditMenu() {
     document.getElementById("edit-categories-links").remove();
     document.getElementById("edit-btn").style.display = "inline-block";
     document.getElementById("categories-links").style.display = "block";

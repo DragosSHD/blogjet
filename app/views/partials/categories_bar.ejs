@@ -3,7 +3,7 @@
         <ul id="categories-links">
                 <% if(categories.length){
                 for(let i = 0; i < categories.length; i++) {%>
-                        <li><a href="/category?name=<%= categories[i].name %>"><%= categories[i].name %></a></li>
+                        <li id="<%= categories[i]._id %>"><a href="/category?name=<%= categories[i].name %>"><%= categories[i].name %></a></li>
                 <% }} else { %>
                         <p class="alert-danger">No Categories</p>
                 <% } %>
@@ -13,7 +13,7 @@
         <button id="save-btn" style="display: none" type="button" class="btn btn-outline-success"
                 onclick="saveChanges()">&#128190</button>
         <button id="discard-btn" style="display: none" type="button" class="btn btn-outline-danger"
-                onclick="discardChanges()">&#10060</button>
+                onclick="closeEditMenu()">&#10060</button>
 </div>
 
 <script src="js/category.cud.js"></script>
