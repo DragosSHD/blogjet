@@ -37,7 +37,7 @@ For preventing eronated data from reaching the database, [validator.js](https://
 ### Built With
 
 * [Node.js](https://nodejs.org/en/)
-* [Exoress.js](https://expressjs.com)
+* [Express.js](https://expressjs.com)
 * [Ejs](https://ejs.co)
 * [MongoDB](https://www.mongodb.com)
 * [Mongoose](https://mongoosejs.com)
