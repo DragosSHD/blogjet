@@ -20,7 +20,9 @@
                     <a href="/delete_post/<%= post._id %>"><button type="button" class="btn btn-danger">Delete</button></a>
                 </div>
                 <article class="post-body">
-                    <img src="" alt="Post image">
+                    <% if(post.imgPath !== undefined) {%>
+                        <img src="" alt="Post image">
+                    <% } %>
                     <h5>Category: <%= currentCategory %></h5>
                     <p class="article-body"><%= post.articleText %></p>
                 </article>
